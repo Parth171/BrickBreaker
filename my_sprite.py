@@ -63,3 +63,9 @@ class MySprite:
 
     def getPOS(self):
         return self.__POS
+
+    def getX(self):
+        return self.__X
+
+    def getY(self):
+        return self.__Y
