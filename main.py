@@ -37,27 +37,31 @@ BRICK3 = Box(104.285, 50)
 BRICK3.setPOS(5, 145)
 BRICK3.setColor((72, 149, 217))
 
+BRICK4 = Box(104.285, 50)
+BRICK4.setPOS(30, 200)
+BRICK4.setColor((255, 150, 0))
+
 
 ROW1 = [BRICK]
 ROW2 = [BRICK2]
 ROW3 = [BRICK3]
+ROW4 = [BRICK4]
+
+ROWS_LIST = [ROW1, ROW3, ROW2, ROW4]
 
 
+for row in ROWS_LIST:
+
+    for i in range(6):
 
 
-for i in range(4):
-
-    "ROW" + "f{i}".append(Box(104.285, 50))
-
-
-
-    """ROW2.append(Box(104.285, 50))
-    Prev_X = ROW2[-2].getX() + 100
-    Prev_y = ROW2[-2].getY()
-    ROW2[-1].setPOS(
-        Prev_X + 10,
-        Prev_y
-    )"""
+        row.append(Box(104.285, 50))
+        Prev_X = row[-2].getX() + 100
+        Prev_y = row[-2].getY()
+        row[-1].setPOS(
+            Prev_X + 10,
+            Prev_y
+        )
 
 
 
@@ -80,12 +84,11 @@ while True:
     #WINDOW.getSurface().blit(BRICK.getSurface(), BRICK.getPOS())
 
 
+    for row in ROWS_LIST:
 
-    for box in ROW1:
-        WINDOW.getSurface().blit(box.getSurface(), box.getPOS())
+        for box in row:
 
-    for box in ROW2:
-        WINDOW.getSurface().blit(box.getSurface(), box.getPOS())
+            WINDOW.getSurface().blit(box.getSurface(), box.getPOS())
 
 
 
