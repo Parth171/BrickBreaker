@@ -1,8 +1,11 @@
 
+
 from window import Window
 from box import Box
 import pygame
 from window import Text
+
+from ball import Ball
 
 
 SCORE = 0
@@ -41,7 +44,6 @@ BRICK4 = Box(104.285, 50)
 BRICK4.setPOS(30, 200)
 BRICK4.setColor((255, 150, 0))
 
-
 ROW1 = [BRICK]
 ROW2 = [BRICK2]
 ROW3 = [BRICK3]
@@ -64,32 +66,37 @@ for row in ROWS_LIST:
         )
 
 
+if __name__ == "__main__":
 
 
 
-print(WINDOW.getWidth() - ROW1[-1].getX())
-print(WINDOW.getHeight())
-
-while True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            exit()
-
-
-    WINDOW.clearScreen()
-    WINDOW.getSurface().blit(UPPER_BOX.getSurface(), UPPER_BOX.getPOS())
-    WINDOW.getSurface().blit(TITLE_TEXT.getSurface(), TITLE_TEXT.getPOS())
-    WINDOW.getSurface().blit(SCORE_TEXT.getSurface(), SCORE_TEXT.getPOS())
-    #WINDOW.getSurface().blit(BRICK.getSurface(), BRICK.getPOS())
-
-
-    for row in ROWS_LIST:
-
-        for box in row:
-
-            WINDOW.getSurface().blit(box.getSurface(), box.getPOS())
 
 
 
-    WINDOW.updateFrame()
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+
+
+        WINDOW.clearScreen()
+        WINDOW.getSurface().blit(UPPER_BOX.getSurface(), UPPER_BOX.getPOS())
+        WINDOW.getSurface().blit(TITLE_TEXT.getSurface(), TITLE_TEXT.getPOS())
+        WINDOW.getSurface().blit(SCORE_TEXT.getSurface(), SCORE_TEXT.getPOS())
+        #WINDOW.getSurface().blit(BRICK.getSurface(), BRICK.getPOS())
+
+
+        for row in ROWS_LIST:
+
+            for box in row:
+
+                WINDOW.getSurface().blit(box.getSurface(), box.getPOS())
+
+        BALL = Ball(14, 5, WINDOW.getWidth()//2, WINDOW.getHeight()//2, (0, 0, 255))
+
+        WINDOW.getSurface().blit(BALL.getSurface(), BALL.getPOS())
+
+
+        WINDOW.updateFrame()
+
