@@ -86,7 +86,6 @@ if __name__ == "__main__":
         WINDOW.getSurface().blit(SCORE_TEXT.getSurface(), SCORE_TEXT.getPOS())
         #WINDOW.getSurface().blit(BRICK.getSurface(), BRICK.getPOS())
 
-
         for row in ROWS_LIST:
 
             for box in row:
@@ -99,4 +98,6 @@ if __name__ == "__main__":
 
 
         WINDOW.updateFrame()
+
+
 

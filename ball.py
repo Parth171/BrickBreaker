@@ -32,7 +32,7 @@ class Ball(MySprite):
 
         self.__X = self.__X + (self._X_DIR * self.__SPEED)
         self.__UPPER_HIT_BOX.setPOS(self.__X, self.__Y)
-        self.__RIGHT_HIT_BOX.setPOS(self.getX() + self.getSurface().get_width()-1, self.__Y)
+        self.__RIGHT_HIT_BOX.setPOS(self.__X + self.getSurface().get_width()-1, self.__Y)
 
         self.__POS = (self.__X, self.__Y)
 
@@ -40,7 +40,8 @@ class Ball(MySprite):
     def updateY(self):
         self.__Y = self.__Y + (self._Y_DIR * self.__SPEED)
         self.__UPPER_HIT_BOX.setPOS(self.__X, self.__Y)
-        self.__RIGHT_HIT_BOX.setPOS(self.getX() + self.getSurface().get_width()-1, self.__Y)
+        self.__RIGHT_HIT_BOX.setPOS(self.__X + self.getSurface().get_width()-1, self.__Y)
+
 
         self.__POS = (self.__X, self.__Y)
 
@@ -79,8 +80,8 @@ if __name__ == "__main__":
                 pygame.quit()
                 exit()
 
-        #BALL.updateX()
-        #BALL.updateY()
+        BALL.updateX()
+        BALL.updateY()
 
         WINDOW.clearScreen()
         WINDOW.getSurface().blit(BALL.getSurface(), BALL.getPOS())
