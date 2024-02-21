@@ -49,3 +49,6 @@ if __name__ == "__main__":
         WINDOW.getSurface().blit(RED_BOX.getSurface(), RED_BOX.getPOS())
         WINDOW.updateFrame()
 
+
+
+

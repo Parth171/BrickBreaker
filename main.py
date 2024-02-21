@@ -1,11 +1,66 @@
-
-
+from my_sprite import MySprite
 from window import Window
 from box import Box
 import pygame
+from pygame import Rect
 from window import Text
-
 from ball import Ball
+
+from paddle import Paddle
+
+class Paddle(MySprite):
+
+    def __init__(self,SPEED,X=0, Y=550):
+        MySprite.__init__(self, WIDTH=150, HEIGHT=7, SPEED=SPEED)
+        self._SURFACE = pygame.Surface(self._DIM, pygame.SRCALPHA, 32)
+
+        self._SURFACE = pygame.Surface(self._DIM, pygame.SRCALPHA, 32)
+        self._SURFACE.fill(self._COLOR)
+        self.__SPEED = SPEED
+        self.X = X
+        self.Y = Y
+        self.POS = (self.X, self.Y)
+
+
+        self.setPOS(400 - self.getSurface().get_width()//2,
+        550)
+
+
+    def WASDmove(self, KEY_PRESSES):
+
+        """
+        move the box based on WASD
+        :param KEY_PRESSES: list[int]
+        :return:
+        """
+
+
+
+        if KEY_PRESSES[pygame.K_d] == 1:
+            self.X = self.X + self.__SPEED
+
+        if KEY_PRESSES[pygame.K_a] == 1:
+            self.X = self.X - self.__SPEED
+
+        if KEY_PRESSES[pygame.K_d] != 1 and KEY_PRESSES[pygame.K_a] != 1:
+
+            if KEY_PRESSES[pygame.K_RIGHT] == 1:
+                self.X = self.X + self.__SPEED
+
+            if KEY_PRESSES[pygame.K_LEFT] == 1:
+                self.X = self.X - self.__SPEED
+
+
+
+        if self.X < 0:
+            self.X = 0
+
+        if self.X + self.getSurface().get_width() > 800:
+            self.X = 800 - self.getSurface().get_width()
+
+
+
+        self.POS = (self.X, self.Y)
 
 
 SCORE = 0
@@ -69,6 +124,12 @@ for row in ROWS_LIST:
 if __name__ == "__main__":
 
 
+    BALL = Ball(14, 5, WINDOW.getWidth() // 2, WINDOW.getHeight() // 2, (0, 0, 255))
+
+    PADDLE = Paddle(10)
+
+
+
 
 
 
@@ -84,7 +145,7 @@ if __name__ == "__main__":
         WINDOW.getSurface().blit(UPPER_BOX.getSurface(), UPPER_BOX.getPOS())
         WINDOW.getSurface().blit(TITLE_TEXT.getSurface(), TITLE_TEXT.getPOS())
         WINDOW.getSurface().blit(SCORE_TEXT.getSurface(), SCORE_TEXT.getPOS())
-        #WINDOW.getSurface().blit(BRICK.getSurface(), BRICK.getPOS())
+
 
         for row in ROWS_LIST:
 
@@ -92,10 +153,22 @@ if __name__ == "__main__":
 
                 WINDOW.getSurface().blit(box.getSurface(), box.getPOS())
 
-        BALL = Ball(14, 5, WINDOW.getWidth()//2, WINDOW.getHeight()//2, (0, 0, 255))
+                if BALL.UPPER_HIT_BOX.isCollision(box.getSurface(), box.getPOS()):
+                    box.setPOS(900, 900)
+
+
+
+        KEYS_PRESSED = pygame.key.get_pressed()
+        PADDLE.WASDmove(KEYS_PRESSED)
+
+
+        BALL.updateX()
+        BALL.updateY()
+
+
 
         WINDOW.getSurface().blit(BALL.getSurface(), BALL.getPOS())
-
+        WINDOW.getSurface().blit(PADDLE.getSurface(), PADDLE.getPOS())
 
         WINDOW.updateFrame()
 

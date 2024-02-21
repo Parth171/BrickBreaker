@@ -22,10 +22,10 @@ class MySprite:
 
         self.__WIDTH = WIDTH
         self.__HEIGHT = HEIGHT
-        self.__X = X
-        self.__Y = Y
+        self.X = X
+        self.Y = Y
         self._DIM = (self.__WIDTH, self.__HEIGHT)
-        self.__POS = (self.__X, self.__Y)
+        self.POS = (self.X, self.Y)
         self.__SPEED = SPEED
         self._COLOR = COLOR
 
@@ -38,12 +38,12 @@ class MySprite:
     # --- MODIFIER --- #
 
     def setX(self, X): # public methods
-        self.__X = X
-        self.__POS = (self.__X, self.__Y)
+        self.X = X
+        self.POS = (self.X, self.Y)
 
     def setY(self, Y):
-        self.__Y = Y
-        self.__POS = (self.__X, self.__Y)
+        self.Y = Y
+        self.POS = (self.X, self.Y)
 
 
     def setPOS(self, X, Y):
@@ -55,6 +55,20 @@ class MySprite:
         self._COLOR = TUPLE
 
 
+    def isCollision(self, SURFACE:pygame.Surface, POS):
+
+
+        WIDTH = SURFACE.get_width()
+        HEIGHT = SURFACE.get_height()
+        X = POS[0]
+        Y = POS[1]
+
+        if X >= self.X - WIDTH and X <= self.X + self._SURFACE.get_width():
+            if Y >= self.Y - HEIGHT and Y <= self.Y + self._SURFACE.get_height():
+                return True
+
+        return False
+
     # --- ACCESSOR --- #
 
 
@@ -62,10 +76,10 @@ class MySprite:
         return self._SURFACE
 
     def getPOS(self):
-        return self.__POS
+        return self.POS
 
     def getX(self):
-        return self.__X
+        return self.X
 
     def getY(self):
-        return self.__Y
+        return self.Y
