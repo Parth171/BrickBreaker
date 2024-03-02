@@ -10,38 +10,38 @@ class Ball(MySprite):
         MySprite.__init__(self, WIDTH=SIZE, HEIGHT=SIZE, SPEED=SPEED, X=X, Y=Y, COLOR=COLOR)
         self._SURFACE = pygame.Surface(self._DIM, pygame.SRCALPHA, 32)
         self._SURFACE.fill(self._COLOR)
-        self.__SPEED = SPEED
+        self.SPEED = SPEED
         self.X_DIR = 1
-        self.Y_DIR = -1
+        self.Y_DIR = 1
         self.X = X
         self.Y = Y
 
-        self.UPPER_HIT_BOX = Box(WIDTH=SIZE, HEIGHT=1)
+        self.UPPER_HIT_BOX = Box(WIDTH=SIZE-(2/3)*SIZE, HEIGHT=1)
         self.UPPER_HIT_BOX.setColor((0, 255, 255))
-        self.UPPER_HIT_BOX.setPOS(self.getX(), self.getY())
+        self.UPPER_HIT_BOX.setPOS(self.getX()+self.UPPER_HIT_BOX.getSurface().get_width(), self.getY())
 
-        self.RIGHT_HIT_BOX = Box(WIDTH=1, HEIGHT=SIZE)
+        self.RIGHT_HIT_BOX = Box(WIDTH=1, HEIGHT=SIZE-(2/3)*SIZE)
         self.RIGHT_HIT_BOX.setColor((245, 167, 66))
-        self.RIGHT_HIT_BOX.setPOS(self.getX() + self.getSurface().get_width() - 1, self.getY())
+        self.RIGHT_HIT_BOX.setPOS(self.getX() + self.getSurface().get_width() - 1, self.getY()+self.RIGHT_HIT_BOX.getSurface().get_height())
 
-        self.LEFT_HIT_BOX = Box(WIDTH=1, HEIGHT=SIZE)
+        self.LEFT_HIT_BOX = Box(WIDTH=1, HEIGHT=SIZE-(2/3)*SIZE)
         self.LEFT_HIT_BOX.setColor((7, 240, 104))
-        self.LEFT_HIT_BOX.setPOS(self.getX(), self.getY())
+        self.LEFT_HIT_BOX.setPOS(self.getX(), self.getY()+self.LEFT_HIT_BOX.getSurface().get_height())
 
-        self.BOTTOM_HIT_BOX = Box(WIDTH=SIZE, HEIGHT=1)
+        self.BOTTOM_HIT_BOX = Box(WIDTH=SIZE-(2/3)*SIZE, HEIGHT=1)
         self.BOTTOM_HIT_BOX.setColor((216, 255, 23))
-        self.BOTTOM_HIT_BOX.setPOS(self.getX(), self.getY() + self.getSurface().get_height())
+        self.BOTTOM_HIT_BOX.setPOS(self.getX()+self.BOTTOM_HIT_BOX.getSurface().get_width(), self.getY() + self.getSurface().get_height())
 
         self.POS = (self.X, self.Y)
 
 
 
     def updateX(self):
-        self.X = self.X + (self.X_DIR * self.__SPEED)
-        self.UPPER_HIT_BOX.setPOS(self.X, self.Y)
-        self.RIGHT_HIT_BOX.setPOS(self.X + self.getSurface().get_width() - 1, self.Y)
-        self.LEFT_HIT_BOX.setPOS(self.X, self.Y)
-        self.BOTTOM_HIT_BOX.setPOS(self.X, self.Y + self.getSurface().get_height())
+        self.X = self.X + (self.X_DIR * self.SPEED)
+        self.UPPER_HIT_BOX.setPOS(self.X + self.UPPER_HIT_BOX.getSurface().get_width(), self.Y)
+        self.RIGHT_HIT_BOX.setPOS(self.X + self.getSurface().get_width() - 1, self.Y+self.RIGHT_HIT_BOX.getSurface().get_height())
+        self.LEFT_HIT_BOX.setPOS(self.X, self.Y+self.LEFT_HIT_BOX.getSurface().get_height())
+        self.BOTTOM_HIT_BOX.setPOS(self.X+self.BOTTOM_HIT_BOX.getSurface().get_width(), self.Y + self.getSurface().get_height())
 
         if self.RIGHT_HIT_BOX.getX() + self.RIGHT_HIT_BOX.getSurface().get_width() > 800:
             self.X_DIR = -self.X_DIR
@@ -52,11 +52,11 @@ class Ball(MySprite):
         self.POS = (self.X, self.Y)
 
     def updateY(self):
-        self.Y = self.Y + (self.Y_DIR * self.__SPEED)
-        self.UPPER_HIT_BOX.setPOS(self.X, self.Y)
-        self.RIGHT_HIT_BOX.setPOS(self.X + self.getSurface().get_width() - 1, self.Y)
-        self.LEFT_HIT_BOX.setPOS(self.X, self.Y)
-        self.BOTTOM_HIT_BOX.setPOS(self.X, self.Y + self.getSurface().get_height())
+        self.Y = self.Y + (self.Y_DIR * self.SPEED)
+        self.UPPER_HIT_BOX.setPOS(self.X +self.UPPER_HIT_BOX.getSurface().get_width(), self.Y)
+        self.RIGHT_HIT_BOX.setPOS(self.X + self.getSurface().get_width() - 1, self.Y+self.RIGHT_HIT_BOX.getSurface().get_height())
+        self.LEFT_HIT_BOX.setPOS(self.X, self.Y+self.LEFT_HIT_BOX.getSurface().get_height())
+        self.BOTTOM_HIT_BOX.setPOS(self.X+self.BOTTOM_HIT_BOX.getSurface().get_width(), self.Y + self.getSurface().get_height())
 
         if self.UPPER_HIT_BOX.getY() < 35:
             self.Y_DIR = -self.Y_DIR
@@ -118,8 +118,8 @@ if __name__ == "__main__":
                 pygame.quit()
                 exit()
 
-        BALL.updateX()
-        BALL.updateY()
+
+
 
         WINDOW.clearScreen()
         WINDOW.getSurface().blit(BALL.getSurface(), BALL.getPOS())

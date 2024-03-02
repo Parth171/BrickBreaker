@@ -26,7 +26,7 @@ class MySprite:
         self.Y = Y
         self._DIM = (self.__WIDTH, self.__HEIGHT)
         self.POS = (self.X, self.Y)
-        self.__SPEED = SPEED
+        self.SPEED = SPEED
         self._COLOR = COLOR
 
         self._SURFACE = pygame.Surface # something the child class will have access too

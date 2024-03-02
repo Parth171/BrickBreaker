@@ -48,14 +48,16 @@ class Text(MySprite):
     creates a text object to put on the screen
     """
 
-    def __init__(self, TEXT, SIZE):
+    def __init__(self, TEXT, SIZE, COLOR=(255,255,255)):
         MySprite.__init__(self)
         self.__SIZE = SIZE
         self.__TEXT = pygame.font.SysFont("Arial", self.__SIZE)
-        self.__SURFACE = self.__TEXT.render(TEXT, 1, (255, 255, 255))
+        self.__SURFACE = self.__TEXT.render(TEXT, 1, COLOR)
 
     def getSurface(self):
         return self.__SURFACE
+
+
 
 if __name__ == "__main__":
 

@@ -15,6 +15,7 @@ class Paddle(MySprite):
         self.X = X
         self.Y = Y
         self.POS = (self.X, self.Y)
+        self.DIR = 1
 
 
         self.setPOS(400 - self.getSurface().get_width()//2,
@@ -33,17 +34,11 @@ class Paddle(MySprite):
 
         if KEY_PRESSES[pygame.K_d] == 1:
             self.X = self.X + self.__SPEED
+            self.DIR = 1
 
         if KEY_PRESSES[pygame.K_a] == 1:
             self.X = self.X - self.__SPEED
-
-        if KEY_PRESSES[pygame.K_d] != 1 and KEY_PRESSES[pygame.K_a] != 1:
-
-            if KEY_PRESSES[pygame.K_RIGHT] == 1:
-                self.X = self.X + self.__SPEED
-
-            if KEY_PRESSES[pygame.K_LEFT] == 1:
-                self.X = self.X - self.__SPEED
+            self.DIR = -1
 
 
 
