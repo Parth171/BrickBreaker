@@ -10,7 +10,7 @@ class Image(MySprite):
 
     def setScale(self, SCALE_X, SCALE_Y=0):
         """
-        Adjust the scale of the image
+        Adjust the scale of the Image
         :param SCALE_X: Float
         :param SCALE_Y: Float
         :return: None
