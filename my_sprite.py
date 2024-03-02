@@ -1,8 +1,7 @@
 
 """
 title: Parent Class
-author: Parth Sakpal
-date-created: 12/22/2023
+
 """
 
 import pygame
@@ -10,12 +9,7 @@ import pygame
 class MySprite:
 
     """
-    abstract sprite class for Pygame sprites. Abstract because it doesn't run by itself
-
-
-    public:
-    partially_protect:
-    private:
+    Parent Class to manage all the sprite objects in the game
     """
 
     def __init__(self, WIDTH=1, HEIGHT=1, X=0, Y=0, SPEED=5, COLOR=(255, 255, 255)):
@@ -35,9 +29,9 @@ class MySprite:
         self.__DIR_Y = 1
 
 
-    # --- MODIFIER --- #
+    # --- MODIFIER METHODS --- #
 
-    def setX(self, X): # public methods
+    def setX(self, X):
         self.X = X
         self.POS = (self.X, self.Y)
 

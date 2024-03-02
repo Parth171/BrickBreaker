@@ -43,10 +43,10 @@ class Ball(MySprite):
         self.LEFT_HIT_BOX.setPOS(self.X, self.Y+self.LEFT_HIT_BOX.getSurface().get_height())
         self.BOTTOM_HIT_BOX.setPOS(self.X+self.BOTTOM_HIT_BOX.getSurface().get_width(), self.Y + self.getSurface().get_height())
 
-        if self.RIGHT_HIT_BOX.getX() + self.RIGHT_HIT_BOX.getSurface().get_width() > 800:
+        if self.RIGHT_HIT_BOX.getX() + self.RIGHT_HIT_BOX.getSurface().get_width() > 790:
             self.X_DIR = -self.X_DIR
 
-        if self.LEFT_HIT_BOX.getX() < 0:
+        if self.LEFT_HIT_BOX.getX() < 10:
             self.X_DIR = -self.X_DIR
 
         self.POS = (self.X, self.Y)

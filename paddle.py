@@ -25,7 +25,7 @@ class Paddle(MySprite):
     def WASDmove(self, KEY_PRESSES):
 
         """
-        move the box based on WASD
+        move the Paddle with A and D
         :param KEY_PRESSES: list[int]
         :return:
         """
@@ -41,12 +41,13 @@ class Paddle(MySprite):
             self.DIR = -1
 
 
+        # Sets the restrictions for the paddle
 
-        if self.X < 0:
-            self.X = 0
+        if self.X < 4:
+            self.X = 4
 
-        if self.X + self.getSurface().get_width() > 800:
-            self.X = 800 - self.getSurface().get_width()
+        if self.X + self.getSurface().get_width() > 796:
+            self.X = 796 - self.getSurface().get_width()
 
 
 

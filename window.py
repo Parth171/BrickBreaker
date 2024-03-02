@@ -1,7 +1,6 @@
 """
 title: Window class
-author: Parth Sakpal
-date-created: 12/22/2023
+
 """
 
 import pygame
