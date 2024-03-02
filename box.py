@@ -1,7 +1,6 @@
 """
 title: BOX SUBCLASS
-author: Parth Sakpal
-date-created: 12/22/2023
+
 """
 
 
