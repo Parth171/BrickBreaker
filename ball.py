@@ -109,7 +109,7 @@ if __name__ == "__main__":
     WINDOW = Window("BALL TEST")
     pygame.init()
 
-    BALL = Ball(150, 5, 100, 100, (0, 0, 255))
+    BALL = Ball(150, 5, 100, 100, (0, 0, 0))
 
     while True:
 

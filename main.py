@@ -62,12 +62,13 @@ if __name__ == "__main__":
 
     # VARIABLES #
     RUN = 0
-    SCORE = 34
-    LEVEL_1_LOSS_COUNTER = 0
-    HIT_COUNTER = 34
+    SCORE = 0
+    LEVEL_1_LOSS_COUNTER = 0 # counts the amount of times the user loses the ball
+    HIT_COUNTER = 0
 
     pygame.init()
 
+    # Creates the window
     WINDOW = Window("BRICKER BREAKER")
 
     # 3 Heart Objects
@@ -84,6 +85,8 @@ if __name__ == "__main__":
         (UPPER_BOX.getSurface().get_width() - TITLE_TEXT.getSurface().get_width()) // 2,
         0
     )
+
+    ### SETS UP THE TEXT AND HEART SPRITES ###
 
     USER_TEXT = Text("Use the 'a' and 'd' keys to move the Paddle! Press SPACE to begin!", 20)
     USER_TEXT.setPOS((WINDOW.getSurface().get_width() - USER_TEXT.getSurface().get_width()) // 2,
@@ -143,11 +146,12 @@ if __name__ == "__main__":
         WINDOW.getSurface().blit(BALL.getSurface(), BALL.getPOS())
         WINDOW.getSurface().blit(PADDLE.getSurface(), PADDLE.getPOS())
 
+        # CHECKS FOR PRESSED KEYS
         KEYS_PRESSED = pygame.key.get_pressed()
 
         if HIT_COUNTER == 35:
             """
-            Checks if the user has cleared the first Level and sets up the layout of the second level
+            Checks if the user has cleared the first Level and sets up the layout for the second level
             """
 
 
@@ -207,6 +211,9 @@ if __name__ == "__main__":
             HIT_COUNTER += 1
 
         if SCORE == 110:
+            """
+            checks if second level is cleared and then runs the end screen
+            """
             RUN = 2
 
 
@@ -216,7 +223,7 @@ if __name__ == "__main__":
         for row in ROWS_LIST_1:
             for box in row:
                 """
-                Checks if the box has been hit, and sets the box position outside the WINDOW dimensions
+                Checks if the box has been hit, and sets the box position outside the WINDOW dimensions to "break" the box
                 """
 
                 WINDOW.getSurface().blit(box.getSurface(), box.getPOS())
@@ -388,7 +395,7 @@ if __name__ == "__main__":
             if KEYS_PRESSED[pygame.K_ESCAPE] == 1:
                 exit()
 
-
+        # Runs the game if SPACE is pressed
         if KEYS_PRESSED[pygame.K_SPACE] == 1:
             RUN = 1
 
