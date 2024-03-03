@@ -12,7 +12,8 @@ To start the game, the user must press SPACE. Once SPACE is pressed, the game wi
 
 Once all the bricks have been broken in the first level, the user progresses to the second level. It is to be noted that the three lives the user gets are carried through, meaning that if the user loses one life on the first level, then they will only have two lives remaining on the second level. This is done intentionally to ensure that the game does not get too easy (and possibly boring) for the user. 
 
-![img_1.png](img_1.png)
+
+![first_level](first_level.png)
 
 ### Second Level: 
 
@@ -22,7 +23,8 @@ The white bricks are the normal bricks which only need to be hit once to break. 
 
 Another thing to consider is that if the corner of the ball hits a brick, it registers as a double-hit as two sides of the brick are being hit at once. This means that if the user skillfully gets a corner to hit a brick, they can break stronger bricks much faster.
 
-![img_2.png](img_2.png)
+
+![second_level](second_level.png)
 
 ### End Screen
 
@@ -37,8 +39,8 @@ The End Screen presents the Score the user got when the game was finished. From 
 
 Below is a planning image that shows the hitboxes of the Ball object. There are four hitboxes on each side, and this is done so the ball knows which direction to go after it hits a brick. Originally, the hitboxes were the same width as the Ball's width. But through experimentation, I learned that the hitboxes work best when they are 1/3 the width of the Ball side width. The size of the Ball used in the game is 20, and at that size, this arrangement of hitboxes works well. 
 
-![img.png](img.png)
 
+![box_hitboxes.png](box_hitboxes.png)
 
 ## Feature List
 
